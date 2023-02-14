@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name("home.contact");
 Route::get('/about', function () {
     $data1 = "About us - Online Store";
     $data2 = "About us";
