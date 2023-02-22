@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\Product;
-use App\Models\Comment;
 
 class ProductController extends Controller
 {
@@ -22,7 +24,7 @@ class ProductController extends Controller
     public function show(string $id): View
     {
         $comment = Comment::findOrFail(1);
-        $comment->setId("8");
+        $comment->setId('8');
         dd($comment->getId());
         $viewData = [];
         $product = Product::findOrFail($id);
@@ -48,7 +50,7 @@ class ProductController extends Controller
             'price' => 'required',
         ]);
 
-        Product::create($request->only(["name","price"]));
+        Product::create($request->only(['name', 'price']));
 
         return back();
     }

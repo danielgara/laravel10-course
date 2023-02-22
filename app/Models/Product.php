@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Comment;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -19,8 +18,7 @@ class Product extends Model
      * $this->attributes['name'] - string - contains the product name
      * $this->attributes['price'] - int - contains the product price
      * $this->comments - Comment[] - contains the associated comments
-    */
-
+     */
     public static function validate(Request $request): void
     {
         $request->validate([
@@ -29,7 +27,7 @@ class Product extends Model
         ]);
     }
 
-    protected $fillable = ['name','price'];
+    protected $fillable = ['name', 'price'];
 
     public function getId(): int
     {
@@ -60,7 +58,7 @@ class Product extends Model
     {
         $this->attributes['price'] = $price;
     }
-    
+
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);

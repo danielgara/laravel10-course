@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function save(Request $request): RedirectResponse
     {
         Product::validate($request);
-        Product::create($request->only(["name","price"]));
+        Product::create($request->only(['name', 'price']));
 
         return back();
     }
@@ -52,6 +52,7 @@ class ProductController extends Controller
         $viewData['title'] = 'Products - Online Store';
         $viewData['subtitle'] = 'List of products';
         $viewData['products'] = Product::with('comments')->get();
+
         return view('product.all')->with('viewData', $viewData);
     }
 }
