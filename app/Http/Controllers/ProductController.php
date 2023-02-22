@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -37,15 +38,20 @@ class ProductController extends Controller
         return view('product.create')->with('viewData', $viewData);
     }
 
-    public function save(Request $request): \Illuminate\Http\RedirectResponse
+    public function save(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-        ]);
-
+        Product::validate($request);
         Product::create($request->only(["name","price"]));
 
         return back();
+    }
+
+    public function all(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Products - Online Store';
+        $viewData['subtitle'] = 'List of products';
+        $viewData['products'] = Product::with('comments')->get();
+        return view('product.all')->with('viewData', $viewData);
     }
 }

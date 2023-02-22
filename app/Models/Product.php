@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
@@ -19,6 +20,14 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
      * $this->comments - Comment[] - contains the associated comments
     */
+
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric|gt:0',
+        ]);
+    }
 
     protected $fillable = ['name','price'];
 
