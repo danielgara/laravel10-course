@@ -16,9 +16,7 @@ class ImageController extends Controller
 
     public function save(Request $request): RedirectResponse
     {
-        $storage = $request->get('storage');
-        $storeInterface = app(ImageStorage::class,
-            ['storage' => $storage]);
+        $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
 
         return back();

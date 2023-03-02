@@ -34,7 +34,7 @@ class Product extends Model
         return $this->attributes['id'];
     }
 
-    public function setId($id): void
+    public function setId(string $id): void
     {
         $this->attributes['id'] = $id;
     }
@@ -44,7 +44,7 @@ class Product extends Model
         return $this->attributes['name'];
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
     }
@@ -54,7 +54,7 @@ class Product extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price): void
+    public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
     }

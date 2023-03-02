@@ -14,11 +14,6 @@
             <label>Image:</label>
             <input type="file" name="profile_image" />
           </div>
-          <b>Where do you want to store the image?:</b>
-          <select name="storage" aria-label="Default select example">
-            <option value="local">Local</option>
-            <option value="gcp">GCP</option>
-          </select>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

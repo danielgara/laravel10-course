@@ -8,10 +8,10 @@
         <div class="card-header">Upload image</div>
         <div class="card-body">
 
-        <form action="{{ route('imagenotdi.save') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('imagebasic.save') }}" method="post" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
-            <label>Image:</label>
+            <label><b>Image:</b></label>
             <input type="file" name="profile_image" />
           </div>
           <b>Where do you want to store the image?:</b>
@@ -19,7 +19,8 @@
             <option value="local">Local</option>
             <option value="gcp">GCP</option>
           </select>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <br /><br />
+          <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
 
         <img src="{{ URL::asset('storage/test.png') }}" />
@@ -29,3 +30,4 @@
   </div>
 </div>
 @endsection
+
