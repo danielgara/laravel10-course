@@ -1,4 +1,4 @@
-name: Laravel-lint
+name: Laravel-e2e
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  laravel-lint:
+  laravel-e2e:
 
     runs-on: ubuntu-latest
 
@@ -30,7 +30,7 @@ jobs:
       run: php artisan key:generate
 
     - name: Cypress run
-      uses: cypress-io/github-action@v1
+      uses: cypress-io/github-action@v2
       with:
         browser: chrome
         install: false
