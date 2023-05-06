@@ -44,4 +44,3 @@ jobs:
         install: false
         start: php artisan serve
         wait-on: http://localhost:8000
-        config-file: cypress.json
